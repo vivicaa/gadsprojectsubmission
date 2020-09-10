@@ -1,0 +1,6 @@
+1. create a new storage bucket
+gsutil mb -l us-central1 gs://$DEVSHELL_PROJECT_ID
+2.create a sample text file in your storage bucket
+echo "this is a sample file" > sample.txt
+3.copy the file to the storage you just created
+gsutil cp sample.txt gs://$DEVSHELL_PROJECT_ID

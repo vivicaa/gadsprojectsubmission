@@ -1,0 +1,14 @@
+1. create a network with autosubnets
+gcloud compute networks create mynetwork --subnet-mode=auto
+2.create a network with custom subnets
+gcloud compute networks subnets create privatesubnet \
+--network=privatenet --region=us-central1 \
+--range=10.0.0.0/24 --enable-private-ip-google-access
+3.create an instance
+gcloud compute instances create default-us-vm \
+--zone=us-central1-a --network=default
+4.create customingress firewall rules
+gcloud compute firewall-rules create \
+mynetwork-ingress-allow-ssh-from-cs \
+--network mynetwork --action ALLOW --direction INGRESS \
+--rules tcp:22 --source-ranges $ip --target-tags=lab-ssh
